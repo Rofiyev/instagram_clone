@@ -29,7 +29,8 @@
     "embla-carousel-react": "^7.1.0",
     "next": "14.0.2",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "@types/node": "^20",

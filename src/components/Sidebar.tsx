@@ -30,19 +30,10 @@ const tabs = {
     { link: "", label: "Authentication", icon: Icon2fa },
     { link: "", label: "Other Settings", icon: IconSettings },
   ],
-  general: [
-    { link: "", label: "Orders", icon: IconShoppingCart },
-    { link: "", label: "Receipts", icon: IconLicense },
-    { link: "", label: "Reviews", icon: IconMessage2 },
-    { link: "", label: "Messages", icon: IconMessages },
-    { link: "", label: "Customers", icon: IconUsers },
-    { link: "", label: "Refunds", icon: IconReceiptRefund },
-    { link: "", label: "Files", icon: IconFileAnalytics },
-  ],
 };
 
 export default function Sidebar() {
-  const [section, setSection] = useState<"account" | "general">("account");
+  const [section, setSection] = useState<"account">("account");
   const [active, setActive] = useState("Billing");
 
   const links = tabs[section].map((item) => (
@@ -67,18 +58,6 @@ export default function Sidebar() {
         <Text fw={500} size="sm" className={classes.title} c="dimmed" mb="xs">
           bgluesticker@mantine.dev
         </Text>
-
-        <SegmentedControl
-          value={section}
-          // @ts-expect-error
-          onChange={(value: "account" | "general") => setSection(value)}
-          transitionTimingFunction="ease"
-          fullWidth
-          data={[
-            { label: "Account", value: "account" },
-            { label: "System", value: "general" },
-          ]}
-        />
       </div>
 
       <div className={classes.navbarMain}>{links}</div>
