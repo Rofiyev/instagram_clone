@@ -45,8 +45,8 @@ export default function Sidebar() {
   return (
     <nav className={classes.navbar}>
       <div>
-        <Text fw={500} size="sm" className={classes.title} c="dimmed" mb="xs">
-          bgluesticker@mantine.dev
+        <Text fw={500} size="sm" className={classes.title} mb="xs">
+          Instagram
         </Text>
       </div>
 
