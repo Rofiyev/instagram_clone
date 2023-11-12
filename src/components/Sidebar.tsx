@@ -1,34 +1,24 @@
 import { useState } from "react";
 import { SegmentedControl, Text } from "@mantine/core";
 import {
-  IconShoppingCart,
-  IconLicense,
-  IconMessage2,
-  IconBellRinging,
+  IconHome,
   IconMessages,
-  IconFingerprint,
-  IconKey,
-  IconSettings,
-  Icon2fa,
-  IconUsers,
-  IconFileAnalytics,
-  IconDatabaseImport,
-  IconReceipt2,
-  IconReceiptRefund,
+  IconFileLike,
+  IconPlus,
+  IconSearch,
   IconLogout,
+  IconUser,
   IconSwitchHorizontal,
 } from "@tabler/icons-react";
 import classes from "./style/Sidebar.module.css";
 
 const tabs = {
   account: [
-    { link: "", label: "Notifications", icon: IconBellRinging },
-    { link: "", label: "Billing", icon: IconReceipt2 },
-    { link: "", label: "Security", icon: IconFingerprint },
-    { link: "", label: "SSH Keys", icon: IconKey },
-    { link: "", label: "Databases", icon: IconDatabaseImport },
-    { link: "", label: "Authentication", icon: Icon2fa },
-    { link: "", label: "Other Settings", icon: IconSettings },
+    { link: "", label: "Home", icon: IconHome },
+    { link: "", label: "Search", icon: IconSearch },
+    { link: "", label: "Liked", icon: IconFileLike },
+    { link: "", label: "Create", icon: IconPlus },
+    { link: "", label: "Profile", icon: IconUser },
   ],
 };
 
