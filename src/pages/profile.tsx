@@ -1,10 +1,12 @@
 import Layout from "@/layout";
 
+interface SearchProps {}
+
 const Search = () => {
   return (
     <>
       <Layout>
-        <h1>Search</h1>
+        <h1>Profile</h1>
       </Layout>
     </>
   );

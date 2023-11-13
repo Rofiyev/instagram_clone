@@ -1,13 +1,15 @@
 import Layout from "@/layout";
 
-const Search = () => {
+interface LikedProps {}
+
+const Liked = () => {
   return (
     <>
       <Layout>
-        <h1>Search</h1>
+        <h1>Liked</h1>
       </Layout>
     </>
   );
 };
 
-export default Search;
+export default Liked;
