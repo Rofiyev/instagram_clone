@@ -1,46 +1,11 @@
-import { useState } from "react";
-import { SegmentedControl, Text } from "@mantine/core";
-import {
-  IconHome,
-  IconMessages,
-  IconFileLike,
-  IconPlus,
-  IconSearch,
-  IconLogout,
-  IconUser,
-  IconSwitchHorizontal,
-} from "@tabler/icons-react";
+import { IconLogout, IconSwitchHorizontal } from "@tabler/icons-react";
 import classes from "./style/Sidebar.module.css";
+import { NextRouter, useRouter } from "next/router";
+import { sidebarItems } from "@/constants";
+import { ISidebarItem } from "@/interface";
 
-const tabs = {
-  account: [
-    { link: "", label: "Home", icon: IconHome },
-    { link: "", label: "Search", icon: IconSearch },
-    { link: "", label: "Liked", icon: IconFileLike },
-    { link: "", label: "Create", icon: IconPlus },
-    { link: "", label: "Profile", icon: IconUser },
-  ],
-};
-
-export default function Sidebar() {
-  const [section, setSection] = useState<"account">("account");
-  const [active, setActive] = useState("Billing");
-
-  const links = tabs[section].map((item) => (
-    <a
-      className={classes.link}
-      data-active={item.label === active || undefined}
-      href={item.link}
-      key={item.label}
-      onClick={(event) => {
-        event.preventDefault();
-        setActive(item.label);
-      }}
-    >
-      <item.icon className={classes.linkIcon} stroke={1.5} />
-      <span>{item.label}</span>
-    </a>
-  ));
+export default function Sidebar(): JSX.Element {
+  const { pathname, push }: NextRouter = useRouter();
 
   return (
     <nav className={classes.navbar}>
@@ -64,7 +29,23 @@ export default function Sidebar() {
         </svg>
       </div>
 
-      <div className={classes.navbarMain}>{links}</div>
+      <div className={classes.navbarMain}>
+        {sidebarItems.map((item: ISidebarItem) => (
+          <a
+            key={item.label}
+            className={classes.link}
+            data-active={item.link == pathname || undefined}
+            href={item.link}
+            onClick={(e: React.MouseEvent<HTMLElement>) => {
+              e.preventDefault();
+              push(item.link);
+            }}
+          >
+            <item.icon className={classes.linkIcon} stroke={1.5} />
+            <span>{item.label}</span>
+          </a>
+        ))}
+      </div>
 
       <div className={classes.footer}>
         <a
