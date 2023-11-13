@@ -1,7 +1,7 @@
 import { Header, Sidebar } from "@/components";
 import React from "react";
 import { ReactNode } from "react";
-import { Skeleton } from "@mantine/core";
+import { Container, Skeleton } from "@mantine/core";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
@@ -12,7 +12,9 @@ export default function Layout({ children }: { children: ReactNode }) {
       <main>
         <Header />
         <Skeleton height={50} circle mb="xl" />
-        {children}
+        <Container px={0} size="30rem">
+          30rem Container without padding
+        </Container>
       </main>
     </div>
   );
