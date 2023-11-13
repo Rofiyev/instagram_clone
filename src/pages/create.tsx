@@ -1,13 +1,15 @@
 import Layout from "@/layout";
 
-const Search = () => {
+interface CreateProps {}
+
+const Create = () => {
   return (
     <>
       <Layout>
-        <h1>Search</h1>
+        <h1>Create</h1>
       </Layout>
     </>
   );
 };
 
-export default Search;
+export default Create;
