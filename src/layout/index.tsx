@@ -9,11 +9,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       <section>
         <Sidebar />
       </section>
-      <main>
-        <Header />
-        <Skeleton height={50} circle mb="xl" />
-        {children}
-      </main>
+      <main>{children}</main>
     </div>
   );
 }

@@ -11,30 +11,36 @@ import {
   IconSwitchHorizontal,
 } from "@tabler/icons-react";
 import classes from "./style/Sidebar.module.css";
+import { useRouter } from "next/router";
 
 const tabs = {
   account: [
-    { link: "", label: "Home", icon: IconHome },
-    { link: "", label: "Search", icon: IconSearch },
-    { link: "", label: "Liked", icon: IconFileLike },
-    { link: "", label: "Create", icon: IconPlus },
-    { link: "", label: "Profile", icon: IconUser },
+    { link: "/", label: "Home", icon: IconHome },
+    { link: "/search", label: "Search", icon: IconSearch },
+    { link: "/liked", label: "Liked", icon: IconFileLike },
+    { link: "/create", label: "Create", icon: IconPlus },
+    { link: "/profile", label: "Profile", icon: IconUser },
   ],
 };
 
 export default function Sidebar() {
   const [section, setSection] = useState<"account">("account");
-  const [active, setActive] = useState("Billing");
+  const navigete = useRouter();
+  const [active, setActive] = useState(navigete.pathname);
+
+  console.log(navigete.pathname.split("/")[1]);
 
   const links = tabs[section].map((item) => (
     <a
       className={classes.link}
-      data-active={item.label === active || undefined}
+      data-active={item.link == navigete.pathname || undefined}
       href={item.link}
       key={item.label}
       onClick={(event) => {
         event.preventDefault();
         setActive(item.label);
+
+        navigete.push(item.link);
       }}
     >
       <item.icon className={classes.linkIcon} stroke={1.5} />
