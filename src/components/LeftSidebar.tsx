@@ -4,7 +4,7 @@ import { NextRouter, useRouter } from "next/router";
 import { sidebarItems } from "@/constants";
 import { ISidebarItem } from "@/interface";
 
-export default function Sidebar(): JSX.Element {
+export default function LeftSidebar(): JSX.Element {
   const { pathname, push }: NextRouter = useRouter();
 
   return (

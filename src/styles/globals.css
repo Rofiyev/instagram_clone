@@ -9,6 +9,14 @@ body {
   color: white !important;
 }
 
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom right, #ffcc00, #ff00cc);
+  border-radius: 30px;
+  height: 5px !important;
+}
+
 ::-webkit-scrollbar {
-  width: 0px !important;
+  background-color: white;
+  width: 10px !important;
+  height: 5px !important;
 }
