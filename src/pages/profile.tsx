@@ -1,15 +1,17 @@
 import Layout from "@/layout";
+import Head from "next/head";
 
-interface SearchProps {}
-
-const Search = () => {
+export default function Profile(): JSX.Element {
   return (
     <>
+      <Head>
+        <title>Instagram | Profile</title>
+      </Head>
       <Layout>
-        <h1>Profile</h1>
+        <main>
+          <h1>Profile</h1>
+        </main>
       </Layout>
     </>
   );
-};
-
-export default Search;
+}

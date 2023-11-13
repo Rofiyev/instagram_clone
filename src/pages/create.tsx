@@ -1,15 +1,17 @@
 import Layout from "@/layout";
+import Head from "next/head";
 
-interface CreateProps {}
-
-const Create = () => {
+export default function Create(): JSX.Element {
   return (
     <>
+      <Head>
+        <title>Instagram | Create</title>
+      </Head>
       <Layout>
-        <h1>Create</h1>
+        <main>
+          <h1>Create</h1>
+        </main>
       </Layout>
     </>
   );
-};
-
-export default Create;
+}

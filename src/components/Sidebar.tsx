@@ -1,5 +1,5 @@
 import { IconLogout, IconSwitchHorizontal } from "@tabler/icons-react";
-import classes from "./style/Sidebar.module.css";
+import classes from "@/styles/Sidebar.module.css";
 import { NextRouter, useRouter } from "next/router";
 import { sidebarItems } from "@/constants";
 import { ISidebarItem } from "@/interface";

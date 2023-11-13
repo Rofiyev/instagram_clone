@@ -1,13 +1,17 @@
 import Layout from "@/layout";
+import Head from "next/head";
 
-const Search = () => {
+export default function Search(): JSX.Element {
   return (
     <>
+      <Head>
+        <title>Instagram | Search</title>
+      </Head>
       <Layout>
-        <h1>Search</h1>
+        <main>
+          <h1>Search</h1>
+        </main>
       </Layout>
     </>
   );
-};
-
-export default Search;
+}
