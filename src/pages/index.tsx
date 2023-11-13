@@ -13,7 +13,7 @@ export default function Home(): JSX.Element {
           <div style={{ width: "65%" }}>
             <Header />
             <div style={{ marginTop: "10px" }}>
-              <h1>Hello world!</h1>
+              <h1>Home</h1>
             </div>
           </div>
           <RightSidebar />
