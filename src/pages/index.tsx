@@ -9,12 +9,12 @@ export default function Home(): JSX.Element {
         <title>Instagram</title>
       </Head>
       <Layout>
-        <main
-          style={{ display: "flex", width: "100% !important", gap: "10px" }}
-        >
-          <div style={{ width: "50%" }}>
+        <main style={{ display: "flex", width: "100%", gap: "10px" }}>
+          <div style={{ width: "65%" }}>
             <Header />
-            <h1>Hello world!</h1>
+            <div style={{ marginTop: "10px" }}>
+              <h1>Hello world!</h1>
+            </div>
           </div>
           <RightSidebar />
         </main>

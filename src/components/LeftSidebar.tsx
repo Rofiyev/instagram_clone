@@ -9,7 +9,7 @@ export default function LeftSidebar(): JSX.Element {
 
   return (
     <nav className={classes.navbar}>
-      <div>
+      <div style={{ marginTop: "30px" }}>
         <svg
           aria-label="Instagram"
           className="x1lliihq x1n2onr6 x5n08af"

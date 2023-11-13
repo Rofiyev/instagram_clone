@@ -1,4 +1,4 @@
-import { Sidebar } from "@/components";
+import { LeftSidebar } from "@/components";
 import Head from "next/head";
 
 export default function Search(): JSX.Element {
@@ -17,7 +17,7 @@ export default function Search(): JSX.Element {
         }}
       >
         <section>
-          <Sidebar />
+          <LeftSidebar />
         </section>
         <main style={{ padding: "20px", width: "100%" }}>
           <h1>Search</h1>

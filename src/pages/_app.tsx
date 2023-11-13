@@ -1,9 +1,10 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { Poppins } from "next/font/google";
-import "@mantine/core/styles.css";
 import { MantineProvider, createTheme } from "@mantine/core";
 import NextNProgress from "nextjs-progressbar";
+import "@mantine/core/styles.css";
+import "react-multi-carousel/lib/styles.css";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["500"] });
 
