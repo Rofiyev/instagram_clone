@@ -15,7 +15,6 @@ export default function Layout({
       </section>
       <main>
         <Container px={10} size="30rem" style={{ marginInline: "auto" }}>
-          <Header />
           {children}
         </Container>
       </main>
