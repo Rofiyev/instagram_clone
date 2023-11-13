@@ -1,8 +1,10 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { Poppins } from "next/font/google";
-import "@mantine/core/styles.css";
 import { MantineProvider, createTheme } from "@mantine/core";
+import NextNProgress from "nextjs-progressbar";
+import "@mantine/core/styles.css";
+import "react-multi-carousel/lib/styles.css";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["500"] });
 
@@ -20,6 +22,13 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <div className={poppins.className}>
       <MantineProvider theme={theme}>
+        <NextNProgress
+          color="#29D"
+          startPosition={0.3}
+          stopDelayMs={200}
+          height={3}
+          showOnShallow={true}
+        />
         <Component {...pageProps} />
       </MantineProvider>
     </div>

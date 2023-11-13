@@ -1,5 +1,5 @@
-import { Sidebar } from "@/components";
-import { Box, Flex, InputBase } from "@mantine/core";
+import { LeftSidebar } from "@/components";
+import { Flex, InputBase } from "@mantine/core";
 import Head from "next/head";
 
 export default function Search(): JSX.Element {
@@ -18,7 +18,7 @@ export default function Search(): JSX.Element {
         }}
       >
         <section>
-          <Sidebar />
+          <LeftSidebar />
         </section>
         <main style={{ padding: "20px", width: "100%" }}>
           <h1>Search</h1>

@@ -28,8 +28,10 @@
     "dayjs": "^1.11.10",
     "embla-carousel-react": "^7.1.0",
     "next": "14.0.2",
+    "nextjs-progressbar": "^0.0.16",
     "react": "^18",
     "react-dom": "^18",
+    "react-multi-carousel": "^2.8.4",
     "yup": "^1.3.2"
   },
   "devDependencies": {

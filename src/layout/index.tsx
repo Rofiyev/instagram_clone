@@ -1,4 +1,4 @@
-import { Header, Sidebar } from "@/components";
+import { LeftSidebar } from "@/components";
 import React from "react";
 import { ReactNode } from "react";
 
@@ -13,14 +13,17 @@ export default function Layout({
         display: "flex",
         maxWidth: "1500px",
         margin: "0 auto",
-        overflow: "hidden",
+        overflowX: "hidden",
         minHeight: "100vh",
+        position: "relative",
       }}
     >
       <section>
-        <Sidebar />
+        <LeftSidebar />
       </section>
-      <main style={{ padding: "20px", width: "100%" }}>{children}</main>
+      <main style={{ padding: "20px", width: "calc(100% - 280px)" }}>
+        {children}
+      </main>
     </div>
   );
 }

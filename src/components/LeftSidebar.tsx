@@ -4,12 +4,12 @@ import { NextRouter, useRouter } from "next/router";
 import { sidebarItems } from "@/constants";
 import { ISidebarItem } from "@/interface";
 
-export default function Sidebar(): JSX.Element {
+export default function LeftSidebar(): JSX.Element {
   const { pathname, push }: NextRouter = useRouter();
 
   return (
     <nav className={classes.navbar}>
-      <div>
+      <div style={{ marginTop: "30px" }}>
         <svg
           aria-label="Instagram"
           className="x1lliihq x1n2onr6 x5n08af"
