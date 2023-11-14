@@ -5,30 +5,28 @@ import Carousel from "react-multi-carousel";
 
 export default function Header(): JSX.Element {
   return (
-    <header style={{ maxHeight: "18vh", width: "100%" }}>
+    <header style={{ maxHeight: "20vh", width: "100%" }}>
       <Carousel responsive={responsiveCorusel}>
         {[...Array(20)].map((_, i) => (
-          <Flex direction={"column"} key={i} style={{ margin: "0px 5px" }}>
+          <Flex direction={"column"} align={'center'} key={i} style={{ margin: "0px 5px" }}>
             <Box
               w={"70px !important"}
               h={"70px !important"}
               style={{
                 borderRadius: "50%",
-                border: 0,
-                background:
-                  "linear-gradient(to bottom right, #ffcc00, #ff00cc)",
-                cursor: "pointer",
-                userSelect: "none",
+                border: "0px",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
+                cursor: "pointer",
+                userSelect: "none",
               }}
             >
               <Image
-                width={69}
-                height={69}
+                width={80}
+                height={80}
                 style={{
-                  border: "2px solid #000",
+                  border: "3px solid #ffcc00",
                   borderRadius: "50%",
                   objectFit: "cover",
                 }}

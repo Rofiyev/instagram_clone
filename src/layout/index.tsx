@@ -21,7 +21,15 @@ export default function Layout({
       <section>
         <LeftSidebar />
       </section>
-      <main style={{ padding: "20px", width: "calc(100% - 280px)" }}>
+      <main
+        style={{
+          padding: "20px",
+          width: "calc(100% - 280px)",
+          position: "absolute",
+          left: "calc(1500px - 1220px)",
+          top: "0px",
+        }}
+      >
         {children}
       </main>
     </div>

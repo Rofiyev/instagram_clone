@@ -1,25 +1,16 @@
 import { FormEvent, useState } from "react";
 import { Box, Button, FileInput, Flex, Group, Modal } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-
+import { NextRouter, useRouter } from "next/router";
 import style from "../styles/profile.module.css";
-import { useRouter } from "next/router";
 
 function Create() {
   const [opened, { open, close }] = useDisclosure(false);
   const [images, setImages] = useState([]);
-  const navigete = useRouter();
+  const navigete: NextRouter = useRouter();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-  };
-
-  const handleImageClick = () => {
-    open();
-  };
-
-  const handleModalClose = () => {
-    close();
   };
 
   const handleImageUpload = (files: any) => {
@@ -49,7 +40,7 @@ function Create() {
     <>
       <Modal
         opened={opened}
-        onClose={handleModalClose}
+        onClose={() => close()}
         centered
         withCloseButton={false}
         padding="xm"
@@ -72,7 +63,7 @@ function Create() {
       </Modal>
 
       <Group className={style.fillup}>
-        <Box onClick={handleImageClick}>
+        <Box onClick={() => open()}>
           <Button>Select from computer</Button>
         </Box>
       </Group>

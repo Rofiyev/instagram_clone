@@ -1,8 +1,7 @@
 import Layout from "@/layout";
 import { Box, Flex } from "@mantine/core";
 import Head from "next/head";
-
-import img from "../assets/photo_2023-07-20_13-12-59.jpg";
+import img from "@/assets/img.jpg";
 import Image from "next/image";
 
 export default function Liked(): JSX.Element {

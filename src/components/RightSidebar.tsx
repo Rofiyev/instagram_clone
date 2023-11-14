@@ -16,12 +16,11 @@ export default function RightSidebar(): JSX.Element {
       <main>
         <Flex justify={"flex-start"} ml={"10px"} align={"center"} gap={"10px"}>
           <Box
-            w={"85px !important"}
-            h={"85px !important"}
+            w={"95px !important"}
+            h={"95px !important"}
             style={{
               borderRadius: "50%",
-              border: "0px solid",
-              background: "linear-gradient(to bottom right, #ffcc00, #ff00cc)",
+              border: "0px",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -30,10 +29,10 @@ export default function RightSidebar(): JSX.Element {
             }}
           >
             <Image
-              width={80}
-              height={80}
+              width={95}
+              height={95}
               style={{
-                border: "2px solid #000",
+                border: "3px solid #ffcc00",
                 borderRadius: "50%",
                 objectFit: "cover",
               }}
@@ -71,13 +70,11 @@ export default function RightSidebar(): JSX.Element {
                 gap={"10px"}
               >
                 <Box
-                  w={"55px !important"}
-                  h={"55px !important"}
+                  w={"55px"}
+                  h={"55px"}
                   style={{
                     borderRadius: "50%",
-                    border: "0px solid",
-                    background:
-                      "linear-gradient(to bottom right, #ffcc00, #ff00cc)",
+                    border: "0px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -86,10 +83,10 @@ export default function RightSidebar(): JSX.Element {
                   }}
                 >
                   <Image
-                    width={50}
-                    height={50}
+                    width={60}
+                    height={60}
                     style={{
-                      border: "2px solid #000",
+                      border: "3px solid #ffcc00",
                       borderRadius: "50%",
                       objectFit: "cover",
                     }}
