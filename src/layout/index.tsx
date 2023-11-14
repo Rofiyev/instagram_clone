@@ -18,9 +18,7 @@ export default function Layout({
         position: "relative",
       }}
     >
-      <section>
-        <LeftSidebar />
-      </section>
+      <LeftSidebar />
       <main
         style={{
           padding: "20px",
