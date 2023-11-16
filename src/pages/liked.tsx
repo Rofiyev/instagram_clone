@@ -5,8 +5,6 @@ import img from "@/assets/img.jpg";
 import Image from "next/image";
 
 export default function Liked(): JSX.Element {
-  console.log(img);
-
   return (
     <>
       <Head>

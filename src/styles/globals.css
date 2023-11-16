@@ -20,3 +20,11 @@ body {
   width: 10px !important;
   height: 5px !important;
 }
+
+html {
+  scroll-snap-type: y mandatory;
+}
+
+.wrapper_video::-webkit-scrollbar {
+  display: none !important;
+}
