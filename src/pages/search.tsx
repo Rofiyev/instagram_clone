@@ -1,4 +1,4 @@
-import { LeftSidebar } from "@/components";
+import { LeftSidebar, Storys } from "@/components";
 import { Flex, InputBase } from "@mantine/core";
 import Head from "next/head";
 
