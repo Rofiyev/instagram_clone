@@ -199,7 +199,7 @@ import Layout from "@/layout";
 import Head from "next/head";
 import { useEffect, useRef, useState } from "react";
 import { videoUrls } from "@/config";
-import { FaMusic, FaPlayCircle } from "react-icons/fa";
+import { FaMusic } from "react-icons/fa";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCirclePlus,
@@ -208,8 +208,6 @@ import {
   faCommentDots,
   faBookmark,
   faShare,
-  faPlayCircle,
-  faFloppyDisk,
 } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 

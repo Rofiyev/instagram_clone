@@ -3,8 +3,14 @@ import Head from "next/head";
 import { Box, Button, Flex, Text } from "@mantine/core";
 import Image from "next/image";
 import img from "@/assets/img.jpg";
+import { Tabs, rem } from "@mantine/core";
+import { IconPhoto, IconVideo } from "@tabler/icons-react";
+import { useRouter } from "next/router";
 
 export default function Profile(): JSX.Element {
+  const iconStyle = { width: rem(12), height: rem(12) };
+  const route = useRouter();
+
   return (
     <>
       <Head>
@@ -57,7 +63,14 @@ export default function Profile(): JSX.Element {
                     <Text size="xl" td="underline" fw={700}>
                       rof1yev
                     </Text>
-                    <Button variant="default">Edit Profile</Button>
+                    <Button
+                      variant="default"
+                      onClick={() => {
+                        route.push("/edit-profile");
+                      }}
+                    >
+                      Edit Profile
+                    </Button>
                   </Flex>
                   <Flex align={"center"} gap={"xl"}>
                     <Text size="xl">8 posts</Text>
@@ -70,7 +83,7 @@ export default function Profile(): JSX.Element {
                     </Text>
                   </Flex>
                   <Flex align={"center"}>
-                    <Text size="sm" mr={'10px'}>
+                    <Text size="sm" mr={"10px"}>
                       Lorem Ipsum is simply dummy text of the printing and
                       typesetting industry. Lorem Ipsum has been the industry`s
                       standard dummy text ever since the 1500.
@@ -88,40 +101,62 @@ export default function Profile(): JSX.Element {
                 alignItems: "center",
               }}
             >
-              <Flex
-                w="100%"
-                mx="auto"
-                align="center"
-                gap={20}
-                style={{ flexWrap: "wrap" }}
-              >
-                {[...Array(11)].map((_, id) => (
-                  <Box
-                    key={id}
-                    style={{
-                      height: "300px",
-                      width: "30%",
-                      background: "red",
-                      position: "relative",
-                      borderRadius: "4px",
-                    }}
+              <Tabs defaultValue="posts" style={{ width: "100%" }}>
+                <Tabs.List justify="center" style={{ marginBottom: "20px" }}>
+                  <Tabs.Tab
+                    style={{}}
+                    value="posts"
+                    leftSection={<IconPhoto style={iconStyle} />}
                   >
-                    <Image
-                      src={img.src}
-                      fill
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        position: "absolute",
-                        top: "0px",
-                        borderRadius: "4px",
-                      }}
-                      loading="lazy"
-                      alt="Image"
-                    />
-                  </Box>
-                ))}
-              </Flex>
+                    Posts
+                  </Tabs.Tab>
+                  <Tabs.Tab
+                    value="videos"
+                    leftSection={<IconVideo style={iconStyle} />}
+                  >
+                    Videos
+                  </Tabs.Tab>
+                </Tabs.List>
+
+                <Tabs.Panel value="posts">
+                  <Flex
+                    w="100%"
+                    mx="auto"
+                    align="center"
+                    gap={20}
+                    style={{ flexWrap: "wrap" }}
+                  >
+                    {[...Array(11)].map((_, id) => (
+                      <Box
+                        key={id}
+                        style={{
+                          height: "300px",
+                          width: "30%",
+                          background: "red",
+                          position: "relative",
+                          borderRadius: "4px",
+                        }}
+                      >
+                        <Image
+                          src={img.src}
+                          fill
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            position: "absolute",
+                            top: "0px",
+                            borderRadius: "4px",
+                          }}
+                          loading="lazy"
+                          alt="Image"
+                        />
+                      </Box>
+                    ))}
+                  </Flex>
+                </Tabs.Panel>
+
+                <Tabs.Panel value="videos">Messages tab content</Tabs.Panel>
+              </Tabs>
             </main>
           </section>
         </main>

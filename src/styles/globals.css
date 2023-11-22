@@ -28,3 +28,37 @@ html {
 .wrapper_video::-webkit-scrollbar {
   display: none !important;
 }
+
+.m-539e827b:hover {
+  background-color: white;
+  color: black !important;
+}
+.m-8fb7ebe7 {
+  color: rgba(255, 255, 255, 0.726) !important;
+}
+.mantine-Modal-content,
+.mantine-Modal-header {
+  z-index: 1000000 !important;
+  background: #000 !important;
+}
+
+.mantine-Modal-header {
+  display: none !important;
+}
+
+.m-54c44539 {
+  max-height: auto;
+}
+
+.react-multiple-carousel__arrow {
+  z-index: 55;
+}
+
+.m-5df29311 {
+  padding-top: 16px !important;
+}
+
+.m-8fb7ebe7 {
+  background: #000;
+  color: wheat;
+}

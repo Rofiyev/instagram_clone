@@ -1,4 +1,4 @@
-import { Header, RightSidebar } from "@/components";
+import { Header, PostCard, RightSidebar } from "@/components";
 import Layout from "@/layout";
 import Head from "next/head";
 
@@ -12,8 +12,10 @@ export default function Home(): JSX.Element {
         <main style={{ display: "flex", width: "100%", gap: "10px" }}>
           <div style={{ width: "65%" }}>
             <Header />
-            <div style={{ marginTop: "10px" }}>
-              <h1>Home</h1>
+            <div style={{ marginTop: "40px" }}>
+              {[...Array(8)].map((_, i) => (
+                <PostCard key={i} />
+              ))}
             </div>
           </div>
           <RightSidebar />
