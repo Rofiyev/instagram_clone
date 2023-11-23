@@ -132,3 +132,10 @@ export const videoUrls = [
     shares: 967,
   },
 ];
+
+export const config = {
+  api: {
+    baseURL: "http://51.20.69.181/",
+    sessionKEY: "access",
+  },
+};
