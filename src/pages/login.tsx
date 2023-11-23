@@ -15,6 +15,8 @@ import Link from "next/link";
 import { LoginFormSchema } from "@/lib";
 import Head from "next/head";
 import { IFormLoginValues } from "@/interface";
+import { Api } from "@/modules/auth";
+import { IEntity } from "@/modules/auth/types";
 
 function Login() {
   const [loading, setLoading] = useState<boolean>(false);
@@ -30,6 +32,15 @@ function Login() {
 
   const submitLoginData = async (data: IFormLoginValues) => {
     setLoading(true);
+    console.log(data);
+
+    try {
+      const dataa = await Api.Login(data);
+
+      console.log(dataa);
+    } catch (error: any) {
+      console.log(error);
+    }
   };
 
   return (
@@ -67,9 +78,7 @@ function Login() {
                   {...getInputProps("password")}
                 />
                 <Title size="12" mt="0">
-                  <Link href="#">
-                    Parolingizni unutdingizmi?
-                  </Link>
+                  <Link href="#">Parolingizni unutdingizmi?</Link>
                 </Title>
 
                 <Button

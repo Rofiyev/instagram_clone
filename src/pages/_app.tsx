@@ -5,6 +5,7 @@ import NextNProgress from "nextjs-progressbar";
 import "@mantine/core/styles.css";
 import "react-multi-carousel/lib/styles.css";
 import "@/styles/globals.css";
+import { Containers } from "@/modules/auth";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["500"] });
 
@@ -22,14 +23,16 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <div className={poppins.className}>
       <MantineProvider theme={theme}>
-        <NextNProgress
-          color="#29D"
-          startPosition={0.3}
-          stopDelayMs={200}
-          height={3}
-          showOnShallow={true}
-        />
-        <Component {...pageProps} />
+        <Containers.Auth>
+          <NextNProgress
+            color="#29D"
+            startPosition={0.3}
+            stopDelayMs={200}
+            height={3}
+            showOnShallow={true}
+          />
+          <Component {...pageProps} />
+        </Containers.Auth>
       </MantineProvider>
     </div>
   );
