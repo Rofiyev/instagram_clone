@@ -57,7 +57,6 @@ function Login() {
                   radius="sm"
                   {...getInputProps("username")}
                 />
-
                 <PasswordInput
                   placeholder="Password"
                   radius="sm"
@@ -71,7 +70,6 @@ function Login() {
                     Parolingizni unutdingizmi?
                   </Link>
                 </Title>
-
                 <Button
                   loading={loading}
                   type="submit"

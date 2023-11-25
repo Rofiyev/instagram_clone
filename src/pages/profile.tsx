@@ -8,6 +8,7 @@ import { IconPhoto, IconVideo } from "@tabler/icons-react";
 
 export default function Profile(): JSX.Element {
   const iconStyle = { width: rem(12), height: rem(12) };
+  
   return (
     <>
       <Head>
