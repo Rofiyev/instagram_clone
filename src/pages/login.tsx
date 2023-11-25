@@ -17,6 +17,7 @@ import Head from "next/head";
 import { IFormLoginValues } from "@/interface";
 import { Api } from "@/modules/auth";
 import { IEntity } from "@/modules/auth/types";
+import { setSession } from "@/services/store";
 
 function Login() {
   const [loading, setLoading] = useState<boolean>(false);
@@ -30,14 +31,18 @@ function Login() {
     validate: yupResolver(LoginFormSchema),
   });
 
-  const submitLoginData = async (data: IFormLoginValues) => {
+  const submitLoginData = async (par: IFormLoginValues) => {
     setLoading(true);
-    console.log(data);
 
     try {
-      const dataa = await Api.Login(data);
+      const { data } = await Api.Login(par);
+      console.log(data);
 
-      console.log(dataa);
+      const tokens: any = data;
+
+      setSession(tokens);
+
+      // window.location.href = "/";
     } catch (error: any) {
       console.log(error);
     }
