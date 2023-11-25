@@ -1,0 +1,27 @@
+.control {
+	&[data-inactive] {
+		opacity: 0;
+		cursor: default;
+	}
+}
+.main {
+  height: 400px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+  border-radius: 6px;
+}
+.button {
+  width: 300px;
+  height: 60px;
+  border-radius: 6px;
+  background-color: blue;
+  cursor: pointer;
+  border: none;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
