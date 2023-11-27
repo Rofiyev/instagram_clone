@@ -20,7 +20,13 @@ export default function Search(): JSX.Element {
         <section>
           <LeftSidebar />
         </section>
-        <main style={{ padding: "20px", width: "100%" }}>
+        <main
+          style={{
+            padding: "20px",
+            width: "calc(100%)",
+            marginLeft: "280px",
+          }}
+        >
           <h1>Search</h1>
           <Flex justify="center" align="center" w="100%" p={24}>
             <InputBase

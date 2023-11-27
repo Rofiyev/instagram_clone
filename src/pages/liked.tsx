@@ -33,7 +33,6 @@ export default function Liked(): JSX.Element {
                 style={{
                   height: "300px",
                   width: "30%",
-                  background: "red",
                   position: "relative",
                   borderRadius: "4px",
                 }}

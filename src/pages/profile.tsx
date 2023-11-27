@@ -5,8 +5,10 @@ import Image from "next/image";
 import img from "@/assets/img.jpg";
 import { Tabs, rem } from "@mantine/core";
 import { IconPhoto, IconVideo } from "@tabler/icons-react";
+import { useRouter } from "next/router";
 
 export default function Profile(): JSX.Element {
+  const route = useRouter();
   const iconStyle = { width: rem(12), height: rem(12) };
   
   return (
@@ -61,7 +63,14 @@ export default function Profile(): JSX.Element {
                     <Text size="xl" td="underline" fw={700}>
                       rof1yev
                     </Text>
-                    <Button variant="default">Edit Profile</Button>
+                    <Button
+                      variant="default"
+                      onClick={() => {
+                        route.push("/edit-profile");
+                      }}
+                    >
+                      Edit Profile
+                    </Button>
                   </Flex>
                   <Flex align={"center"} gap={"xl"}>
                     <Text size="xl">8 posts</Text>
@@ -123,7 +132,6 @@ export default function Profile(): JSX.Element {
                         style={{
                           height: "300px",
                           width: "30%",
-                          background: "red",
                           position: "relative",
                           borderRadius: "4px",
                         }}

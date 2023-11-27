@@ -15,10 +15,13 @@ import Link from "next/link";
 import { LoginFormSchema } from "@/lib";
 import Head from "next/head";
 import { IFormLoginValues } from "@/interface";
+import { Api } from "@/modules/auth";
+import { IEntity } from "@/modules/auth/types";
+import { setSession } from "@/services/store";
 
 function Login() {
   const [loading, setLoading] = useState<boolean>(false);
-  const navigate: NextRouter = useRouter();
+  const { push }: NextRouter = useRouter();
 
   const { getInputProps, onSubmit } = useForm<IFormLoginValues>({
     initialValues: {
@@ -28,8 +31,20 @@ function Login() {
     validate: yupResolver(LoginFormSchema),
   });
 
-  const submitLoginData = async (data: IFormLoginValues) => {
+  const submitLoginData = async (par: IFormLoginValues) => {
     setLoading(true);
+
+    try {
+      const { data } = await Api.Login(par);
+      console.log(data);
+
+      const tokens: { access: string; refresh: string } = data;
+
+      setSession(tokens);
+      push("/");
+    } catch (error: any) {
+      console.log(error);
+    }
   };
 
   return (
@@ -48,7 +63,7 @@ function Login() {
         }}
       >
         <form onSubmit={onSubmit(submitLoginData)}>
-          <Paper w={400}>
+          <Paper w={400} style={{ background: "#000" }}>
             <Flex direction="column" gap={20} align="center" p={20}>
               <Flex direction="column" gap={15} w="100%">
                 <InputBase
@@ -65,27 +80,31 @@ function Login() {
                   }}
                   {...getInputProps("password")}
                 />
-                <Title size="12" mt="0">
-                  <Link href="#">
+                <Title size="12" mt="0" style={{ textAlign: "right" }}>
+                  <Link
+                    style={{
+                      fontFamily: "inherit",
+                      textDecoration: "none",
+                      color: "rgba(0, 106, 255, .5)",
+                    }}
+                    href="#"
+                  >
                     Parolingizni unutdingizmi?
                   </Link>
                 </Title>
                 <Button
+                  size="sm"
                   loading={loading}
                   type="submit"
+                  color="gray"
                   style={{
                     borderRadius: "5px",
-                    color: "rgba(0, 106, 255, 1)",
-                    height: "50px",
-                    backgroundColor: "rgba(231, 240, 255, 1)",
-                    fontSize: "20px",
                   }}
                 >
                   {loading ? "Loading..." : "Tizimga kirish"}
                 </Button>
                 <Text
                   size="15px"
-                  color="rgba(17, 17, 17, 0.36)"
                   style={{
                     display: "flex",
                     alignItems: "center",
@@ -97,7 +116,12 @@ function Login() {
                   }}
                 >
                   Akkauntingiz yo`qmi? unda{" "}
-                  <Link href="/register">ro`yxatdan o`ting!</Link>
+                  <Link
+                    style={{ color: "rgba(0, 106, 255, .5)" }}
+                    href="/register"
+                  >
+                    ro`yxatdan o`ting!
+                  </Link>
                 </Text>
               </Flex>
             </Flex>
