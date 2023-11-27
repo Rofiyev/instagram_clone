@@ -5,3 +5,4 @@ export { default as PostCard } from "./PostCard";
 export { default as Storys } from "./Storys";
 export { default as ModalPost } from "./ModalPost";
 export { default as ProfileDemo } from "./ProfileModal";
+export { default as Dropzone } from "./Dropzone";

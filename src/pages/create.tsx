@@ -1,5 +1,5 @@
-import Demo from "@/components/Modal";
 import Layout from "@/layout";
+import { Dropzone } from "@/components";
 import { Flex } from "@mantine/core";
 import Head from "next/head";
 
@@ -10,10 +10,11 @@ function Create() {
         <title>Instagram Create</title>
       </Head>
       <Layout>
-        <Flex>
-          <h1>Create new post</h1>
-          <hr />
-          <Demo />
+        <h1>Create new post</h1>
+        <Flex gap={"1rem"}>
+          <Dropzone />
+          <Dropzone />
+          <Dropzone />
         </Flex>
       </Layout>
     </>

@@ -1,14 +1,5 @@
 import { useState } from "react";
-import {
-  Box,
-  Button,
-  Flex,
-  InputBase,
-  Paper,
-  PasswordInput,
-  Text,
-  Title,
-} from "@mantine/core";
+import { Box, Button, Flex, InputBase, Paper, PasswordInput, Text, Title } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { NextRouter, useRouter } from "next/router";
 import Link from "next/link";
@@ -23,13 +14,13 @@ function Login() {
   const [loading, setLoading] = useState<boolean>(false);
   const { push }: NextRouter = useRouter();
 
-  const { getInputProps, onSubmit } = useForm<IFormLoginValues>({
-    initialValues: {
-      username: "",
-      password: "",
-    },
-    validate: yupResolver(LoginFormSchema),
-  });
+	const { getInputProps, onSubmit } = useForm<IFormLoginValues>({
+		initialValues: {
+			username: "",
+			password: "",
+		},
+		validate: yupResolver(LoginFormSchema),
+	});
 
   const submitLoginData = async (par: IFormLoginValues) => {
     setLoading(true);
