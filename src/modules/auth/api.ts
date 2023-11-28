@@ -11,3 +11,8 @@ export const Login = ({ ...params }: IApi.Login.Request) =>
   );
 
 export const Profile = () => http.get("/api/v1/user/profile");
+export const ProfileUpdate = ({ ...params }: IApi.EditProfil.Request) =>
+  http.patch("/api/v1/user/profile", objectToFormData({ ...params }));
+
+export const SearchUser = (search: string) =>
+  http.get(`/api/v1/user/search/${search}/`);

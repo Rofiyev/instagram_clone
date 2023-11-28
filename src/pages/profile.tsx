@@ -6,11 +6,13 @@ import img from "@/assets/img.jpg";
 import { Tabs, rem } from "@mantine/core";
 import { IconPhoto, IconVideo } from "@tabler/icons-react";
 import { useRouter } from "next/router";
+import { useAuth } from "@/modules/auth/context";
 
 export default function Profile(): JSX.Element {
   const route = useRouter();
   const iconStyle = { width: rem(12), height: rem(12) };
-  
+  const { user } = useAuth();
+
   return (
     <>
       <Head>
@@ -49,7 +51,8 @@ export default function Profile(): JSX.Element {
                       objectFit: "cover",
                       cursor: "pointer",
                     }}
-                    src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D"
+                    // @ts-expect-error
+                    src={user?.image}
                     alt="avatar"
                     loading="lazy"
                   />
@@ -61,7 +64,7 @@ export default function Profile(): JSX.Element {
                 >
                   <Flex align={"center"} gap={"xl"}>
                     <Text size="xl" td="underline" fw={700}>
-                      rof1yev
+                      {user?.username}
                     </Text>
                     <Button
                       variant="default"
@@ -73,20 +76,24 @@ export default function Profile(): JSX.Element {
                     </Button>
                   </Flex>
                   <Flex align={"center"} gap={"xl"}>
-                    <Text size="xl">8 posts</Text>
-                    <Text size="xl">66k followers</Text>
-                    <Text size="xl">18 following</Text>
+                    <Text size="xl">0 posts</Text>
+                    {/* @ts-expect-error */}
+                    <Text size="xl">{user?.followers} followers</Text>
+                    {/* @ts-expect-error */}
+                    <Text size="xl">{user?.following} following</Text>
                   </Flex>
                   <Flex align={"center"} gap={"xl"}>
                     <Text size="lg" color={"gray"}>
-                      Rofiyev Dilshod
+                      {/* @ts-expect-error */}
+
+                      {user?.fullname}
                     </Text>
                   </Flex>
                   <Flex align={"center"}>
                     <Text size="sm" mr={"10px"}>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry`s
-                      standard dummy text ever since the 1500.
+                      {/* @ts-expect-error */}
+
+                      {user.bio}
                     </Text>
                   </Flex>
                 </Box>

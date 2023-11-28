@@ -16,22 +16,20 @@ const useProfile = (): [State, Dispatch<SetStateAction<State>>] => {
     user: null,
   });
 
-  // useEffect(() => {
-  //   const request = async () => {
-  //     try {
-  //       const { data } = await Api.Profile();
+  useEffect(() => {
+    const request = async () => {
+      try {
+        const { data } = await Api.Profile();
 
-  //       const user = Mappers.User(data);
+        setState({ user: data, isLoading: false });
+      } catch (err: any) {
+        clearSession();
+        setState({ user: null, isLoading: false });
+      }
+    };
 
-  //       setState({ user, isLoading: false });
-  //     } catch (err: any) {
-  //       clearSession();
-  //       setState({ user: null, isLoading: false });
-  //     }
-  //   };
-
-  //   if (access) request();
-  // }, []);
+    if (access) request();
+  }, []);
 
   return [state, setState];
 };
