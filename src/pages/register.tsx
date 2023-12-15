@@ -4,6 +4,7 @@ import {
   Button,
   Flex,
   InputBase,
+  Notification,
   Paper,
   PasswordInput,
   Text,
@@ -11,28 +12,41 @@ import {
 import { useForm, yupResolver } from "@mantine/form";
 import { NextRouter, useRouter } from "next/router";
 import Link from "next/link";
-import { IFormRegisterValues } from "@/interface";
+import { IFormRegister } from "@/interface";
 import { FormSchema } from "@/lib";
 import Head from "next/head";
+import { Api } from "@/modules/auth";
+import { toast } from "react-toastify";
 
 const Register = (): JSX.Element => {
-  const { getInputProps, onSubmit } = useForm<IFormRegisterValues>({
+  const [loading, setLoading] = useState<boolean>(false);
+  const { push }: NextRouter = useRouter();
+
+  const { getInputProps, onSubmit, reset } = useForm<IFormRegister>({
     initialValues: {
-      first_name: "",
-      last_name: "",
       username: "",
+      email: "",
       password: "",
-      re_password: "",
     },
     validate: yupResolver(FormSchema),
   });
 
-  const [loading, setLoading] = useState<boolean>(false);
-  const navigate: NextRouter = useRouter();
-  
-  const onRegister = async (data: IFormRegisterValues) => {
+  const handleSubmit = async (values: IFormRegister) => {
     setLoading(true);
-    console.log(data);
+    try {
+      const { data } = await Api.Register(values);
+      data && push("/login");
+      reset();
+    } catch (error: any) {
+      let str: string = '';
+      Object.entries(error.data).forEach(([key, value]) => { str += value });
+      toast.error(str, {
+        position: 'top-right',
+        autoClose: 3000
+      })
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -50,60 +64,61 @@ const Register = (): JSX.Element => {
           gap: "200px",
         }}
       >
-        <form onSubmit={onSubmit(onRegister)}>
-          <Paper w={400}>
+        <Paper w={400} style={{ background: '#000', color: 'white' }}>
+          <form onSubmit={onSubmit(handleSubmit)}>
             <Flex direction="column" gap={20} align="center" p={20}>
               <Flex direction="column" gap={22} w="100%">
                 <InputBase
-                  autoFocus
                   placeholder="username"
                   radius="sm"
+                  required
+                  type="text"
                   {...getInputProps("username")}
+                />
+
+                <InputBase
+                  placeholder="email"
+                  type="email"
+                  radius="sm"
+                  required
+                  {...getInputProps("email")}
                 />
 
                 <PasswordInput
                   placeholder="Password"
                   radius="sm"
+                  type="password"
                   style={{
                     border: "none",
                   }}
                   {...getInputProps("password")}
                 />
-                <PasswordInput
-                  placeholder="Confirm password"
-                  radius="sm"
-                  style={{
-                    border: "none",
-                  }}
-                  {...getInputProps("re_password")}
-                />
 
                 <Button
-                  loading={loading}
                   type="submit"
+                  loading={loading}
                   style={{
-                    color: "rgba(0, 106, 255, 1)",
-                    height: "50px",
-                    backgroundColor: "rgba(231, 240, 255, 1)",
+                    color: "white",
+                    backgroundColor: "gray",
                     fontSize: "18px",
-                    "&:hover": {
-                      color: "white",
-                    },
                   }}
                 >
                   Register
                 </Button>
                 <Text
-                  size="16px"
-                  color="rgba(17, 17, 17, 0.36)"
+                  size="14px"
+                  color="white"
                   style={{ alignSelf: "center" }}
                 >
-                  Akkauntingiz bormi? unda <Link href="/login">Login!</Link>
+                  Akkauntingiz bormi? unda {' '}
+                  <Link href="/login" style={{ textDecoration: 'underline', color: "gray" }}>
+                    Login!
+                  </Link>
                 </Text>
               </Flex>
             </Flex>
-          </Paper>
-        </form>
+          </form>
+        </Paper>
       </Box>
     </>
   );

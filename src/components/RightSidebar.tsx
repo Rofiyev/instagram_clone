@@ -1,7 +1,11 @@
+import useProfile from "@/modules/auth/use-profile";
 import { Box, Button, Flex, Text } from "@mantine/core";
 import Image from "next/image";
 
 export default function RightSidebar(): JSX.Element {
+  const [{ user }] = useProfile();
+  console.log(user);
+
   return (
     <section
       style={{
@@ -42,9 +46,9 @@ export default function RightSidebar(): JSX.Element {
             />
           </Box>
           <Box>
-            <Text size="sm">rof1yev</Text>
+            <Text size="sm">{user?.username}</Text>
             <Text size="lg" color="gray">
-              Rofiyev Dilshod
+              {user?.firstName} {user?.lastName}
             </Text>
           </Box>
         </Flex>

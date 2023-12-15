@@ -23,8 +23,9 @@ import Carousel from "react-multi-carousel";
 import { LuSend } from "react-icons/lu";
 import { useDisclosure } from "@mantine/hooks";
 import { ModalPost } from ".";
+import { IPosts } from "@/interface";
 
-export default function PostCard() {
+export default function PostCard({ item }: { item: IPosts }) {
   const [isLiked, setIsLiked] = useState<boolean>(false);
   const [isSaved, setIsSaved] = useState<boolean>(false);
   const [isCheck, setIsCheck] = useState<boolean>(false);
@@ -48,7 +49,10 @@ export default function PostCard() {
                 src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D"
                 alt="user author posts"
               />
-              <Text fw={500}>username</Text>
+              <Flex direction='column' >
+                <Text fw={500}>{item.username}</Text>
+                <p>{new Date(item.created_at).toDateString()}</p>
+              </Flex>
               <Button size="sm" variant="subtle" ml={"20px"}>
                 Follow
               </Button>
@@ -83,12 +87,18 @@ export default function PostCard() {
 
         <Card.Section>
           <Carousel responsive={responsiveCoruselPosts}>
-            {[...Array(4)].map((_, i) => (
-              <Image
-                key={i}
-                src="https://images.unsplash.com/photo-1579263477001-7a703f1974e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80"
-              />
-            ))}
+            {item.media.map((c: string, i: number) => {
+              let format = c.slice(c.lastIndexOf('.') + 1);
+              if (format === 'mp4' || format === 'mov') {
+                return (
+                  <video key={i} src={`http://51.20.69.181/${c}`} loop autoPlay muted></video>
+                )
+              } else {
+                return (
+                  <Image key={i} src={c} />
+                )
+              }
+            })}
           </Carousel>
         </Card.Section>
 
@@ -103,7 +113,7 @@ export default function PostCard() {
           }}
         >
           <Box display={"flex"} style={{ alignItems: "center", gap: "10px" }}>
-            {!isLiked ? (
+            {item.is_liked ? (
               <FaRegHeart
                 style={{ fontSize: "25px", cursor: "pointer" }}
                 onClick={() => setIsLiked(true)}
@@ -132,10 +142,6 @@ export default function PostCard() {
             />
           )}
         </Card.Section>
-        <Card.Section inheritPadding>
-          <Text size="sm">2000 likes</Text>
-        </Card.Section>
-
         <Card.Section inheritPadding pb="md">
           <Text mt="sm" size="sm">
             <Text
@@ -144,13 +150,9 @@ export default function PostCard() {
               inherit
               c="var(--mantine-color-anchor)"
             >
-              username
+              {item.username}
             </Text>{" "}
-            since last visit, review them to select which one should be added to
-            your gallery
-          </Text>
-          <Text size="sm" color={"gray"} style={{ cursor: "pointer" }}>
-            View all 64 comments
+            {item.text}
           </Text>
           <Input
             mt={"sm"}
@@ -231,6 +233,6 @@ export default function PostCard() {
         </Box>
       </ModalPost>
       {/* Modal */}
-    </div>
+    </div >
   );
 }

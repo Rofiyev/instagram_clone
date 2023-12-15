@@ -1,85 +1,60 @@
-import { FormEvent, useState } from "react";
-import { Box, Button, FileInput, Flex, Group, Modal } from "@mantine/core";
+import { ChangeEvent, useState } from "react";
+import { Box, Flex, Group, Modal } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import Image from "next/image";
-import { useRouter } from "next/router";
 
-import Img from "../assets/img.jpg";
-
-function ProfileDemo() {
+function ProfileDemo({ file, setFile }: { file: string; setFile: Function }) {
   const [opened, { open, close }] = useDisclosure(false);
-  const [images, setImages] = useState([]);
-  const navigete = useRouter();
+  const [images, setImages] = useState(file);
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-  };
-
-  const handleImageClick = () => {
-    open();
-  };
-
-  const handleModalClose = () => {
-    close();
-  };
-
-  const handleImageUpload = (files: any) => {
-    if (files) {
-      // @ts-expect-error
-      setImages([files]);
-    } else {
-      // Dosya seçilmediğinde bir hata mesajı gösterme işlemini burada yapabilirsiniz.
-      // Örnek olarak React-Toastify kullanarak:
-      // toast.error("Dosya seçilmedi");
+  const handleImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
+    const target = e.target;
+    if (target && target.files) {
+      setImages(URL.createObjectURL(target.files?.[0]));
+      setFile(target.files?.[0]);
+      close();
     }
-  };
-
-  const btnStyle2 = {
-    color: "white",
-    fontFamily: "Gilroy-Medium",
-    fontSize: "24px",
-    fontStyle: "normal",
-    fontWeight: "400",
-    lineHeight: "normal",
-    borderRadius: "18px",
-    border: "3px solid rgba(17, 17, 17, 0.04)",
-    margin: "50px 100px 50px 100px",
   };
 
   return (
     <>
       <Modal
         opened={opened}
-        onClose={handleModalClose}
+        onClose={() => close()}
         centered
         withCloseButton={false}
         padding="xm"
       >
-        <Flex justify="space-around">
-          <form onSubmit={handleSubmit}>
-            <FileInput
-              style={{ marginTop: "30px", fontWeight: "bold" }}
-              name="image"
-              label="Rasmni tanlang"
-              placeholder="Rasmni tanlash uchun bosing"
-              required
-              onChange={handleImageUpload}
-            />
-            <Button style={btnStyle2} type="submit">
-              Yangilash
-            </Button>
-          </form>
+        <Flex style={{ width: "100%" }}>
+          <label
+            htmlFor="image"
+            style={{
+              padding: "20px",
+              border: "1px dashed #fff",
+              width: "100%",
+              textAlign: "center",
+            }}
+          >
+            Upload
+          </label>
+          <input
+            type="file"
+            id="image"
+            style={{ display: "none" }}
+            accept=".jpg, .jpeg, .png"
+            onChange={handleImageUpload}
+          />
         </Flex>
       </Modal>
 
       <Group>
-        <Box onClick={handleImageClick}>
+        <Box onClick={() => open()}>
           <Image
-            src={Img}
+            src={images}
             width={500}
             height={500}
             alt="Picture of the author"
-            style={{ borderRadius: "4px" }}
+            style={{ borderRadius: "4px", objectFit: "cover" }}
           />
         </Box>
       </Group>

@@ -1,11 +1,14 @@
 import type { AppProps } from "next/app";
 import { Poppins } from "next/font/google";
-import { MantineProvider, Notification, createTheme } from "@mantine/core";
+import { MantineProvider, createTheme } from "@mantine/core";
 import NextNProgress from "nextjs-progressbar";
 import "@mantine/core/styles.css";
 import "react-multi-carousel/lib/styles.css";
 import "@/styles/globals.css";
 import { Notifications } from "@mantine/notifications";
+import '@mantine/notifications/styles.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["500"] });
 
@@ -25,7 +28,8 @@ export default function App({ Component, pageProps }: AppProps) {
 			<MantineProvider theme={theme}>
 				<NextNProgress color="#29D" startPosition={0.3} stopDelayMs={200} height={3} showOnShallow={true} />
 				<Component {...pageProps} />
-				<Notifications position="top-right"/>
+				<ToastContainer />
+				<Notifications position="top-right" />
 			</MantineProvider>
 		</div>
 	);

@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useEffect } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 import { Api, Mappers, Types } from ".";
 import { clearSession, getSession } from "@/services/store";
@@ -11,27 +11,27 @@ interface State {
 const useProfile = (): [State, Dispatch<SetStateAction<State>>] => {
   const { access } = getSession();
   const { refresh } = getSession();
-  const [state, setState] = React.useState<State>({
+  const [state, setState] = useState<State>({
     isLoading: !!access,
     user: null,
   });
 
-  // useEffect(() => {
-  //   const request = async () => {
-  //     try {
-  //       const { data } = await Api.Profile();
+  useEffect(() => {
+    const request = async () => {
+      try {
+        const { data } = await Api.getProfile();
 
-  //       const user = Mappers.User(data);
+        const user = Mappers.User(data);
+        console.log(user);
+        setState({ user, isLoading: false });
+      } catch (err: any) {
+        clearSession();
+        setState({ user: null, isLoading: false });
+      }
+    };
 
-  //       setState({ user, isLoading: false });
-  //     } catch (err: any) {
-  //       clearSession();
-  //       setState({ user: null, isLoading: false });
-  //     }
-  //   };
-
-  //   if (access) request();
-  // }, []);
+    if (access) request();
+  }, []);
 
   return [state, setState];
 };
