@@ -22,7 +22,6 @@ const useProfile = (): [State, Dispatch<SetStateAction<State>>] => {
         const { data } = await Api.getProfile();
 
         const user = Mappers.User(data);
-        console.log(user);
         setState({ user, isLoading: false });
       } catch (err: any) {
         clearSession();

@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Box,
   Button,
@@ -51,16 +51,16 @@ export default function Login() {
   };
 
   const [{ user }] = useProfile();
-  useLayoutEffect(() => {
+  useEffect(() => {
     user && push("/");
-  }, []);
+  }, [user]);
 
   return (
     <>
       <Head>
         <title>Instagram | Login</title>
       </Head>
-      {!user && (
+      {user && (
         <>
           <Box
             h="100vh"
